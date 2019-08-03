@@ -4,22 +4,6 @@
   "version": "2.0.0",
    "tasks": [
     {
-      "label": "Execute Ruby Script",
-      "type": "shell",
-      "group": "build",
-      "command": "${config:ruby.interpreter.commandPath}",
-      "args": [
-        "${file}"
-      ],
-      "osx": {},
-      "linux": {},
-      "windows": {},
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      }
-    },
-    {
       "label": "Build C/C++ Application",
       "type": "shell",
       "group": "build",
@@ -194,7 +178,6 @@
       "problemMatcher": [
         "$gcc"
       ]
-    }
-
+    },
   ]
 }
