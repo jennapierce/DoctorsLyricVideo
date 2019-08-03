@@ -1,0 +1,17 @@
+// These settings are for the Code Runner plugin...
+// Untested on osx and lin...
+// No debugging, but easy to use (just hit the play button!)
+//
+// To use, search for (Ctrl+Shift+X) and install the Code Runner plugin...
+
+{
+ 
+   "code-runner.clearPreviousOutput": true,
+   "code-runner.saveAllFilesBeforeRun": true,
+   "code-runner.runInTerminal": true,
+   "code-runner.executorMap": {//build\\$fileNameWithoutExt.exe; 
+   "cpp": "cd $dir && C:\\MinGW\\bin\\g++ *.cpp -o build\\$fileNameWithoutExt.exe -std=c++11 -O3 -g3 -Wall -fmessage-length=0 -march=native && Start-Process cmd '/c build\\$fileNameWithoutExt.exe & pause'",
+   "java": "cd $dir && javac *.java && java $fileNameWithoutExt"
+   }
+}
+//https://github.com/formulahendry/vscode-code-runner/issues/416

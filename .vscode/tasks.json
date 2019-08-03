@@ -1,0 +1,111 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+   "tasks": [
+    {
+      "label": "Execute Ruby Script",
+      "type": "shell",
+      "group": "build",
+      "command": "${config:ruby.interpreter.commandPath}",
+      "args": [
+        "${file}"
+      ],
+      "osx": {},
+      "linux": {},
+      "windows": {},
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    // duplicate this to work for GLUT
+    {
+      "label": "Build C/C++ Application",
+      "type": "shell",
+      "group": "build",
+      "osx": {
+        "command": "clang++",
+        "args": [
+          "\"${fileDirname}/*.cpp\"",
+          "-o",
+          "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+          "-std=c++11",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native",
+          "-v"
+        ],
+      },
+      "linux": {
+        "command": "g++",
+        "args": [
+          "\"${fileDirname}/*.cpp\"",
+          "-o",
+          "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+          "-std=c++11",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native"
+        ]
+      },
+      "windows": {
+        //"command": "c:\\mingw\\bin\\g++",
+         "command": "g++",
+       "args": [
+          "*.cpp",
+          "-o",
+          ".\\build\\${fileBasenameNoExtension}.exe",
+          "-std=c++11",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native"
+        ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "Build and Run C/C++ Application",
+      "type": "shell",
+      "group": "build",
+      "dependsOn": [
+        "Build C/C++ Application"
+      ],
+      "dependsOrder": "sequence",
+      "osx": {
+        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+        "args": []
+      },
+      "linux": {
+        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+        "args": []
+      },
+      "windows": {
+        // With pause in external shell...
+        "command": "Start-Process cmd '/c .\\build\\${fileBasenameNoExtension}.exe & pause'",
+        // ..or without pause in console area
+        //"command": ".\\build\\${fileBasenameNoExtension}.exe",
+        "args": []
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    }
+  ]
+}
