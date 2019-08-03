@@ -19,7 +19,6 @@
         "panel": "dedicated"
       }
     },
-    // duplicate this to work for GLUT
     {
       "label": "Build C/C++ Application",
       "type": "shell",
@@ -54,7 +53,6 @@
         ]
       },
       "windows": {
-        //"command": "c:\\mingw\\bin\\g++",
          "command": "g++",
        "args": [
           "*.cpp",
@@ -70,13 +68,72 @@
       },
       "presentation": {
         "reveal": "always",
-        "panel": "dedicated"
+        "panel": "shared"
       },
       "problemMatcher": [
         "$gcc"
       ]
     },
     {
+      "label": "Build OpenGL C/C++ Application",
+      "type": "shell",
+      "group": "build",
+      "osx": {
+        "command": "clang++",
+        "args": [
+          // I DON'T KNOW THESE SETTINGS!
+          "\"${fileDirname}/*.cpp\"",
+          "-o",
+          "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+          "-std=c++11",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native",
+          "-v"
+        ],
+      },
+      "linux": {
+         // I DON'T KNOW THESE SETTINGS!
+         "command": "g++",
+        "args": [
+          "\"${fileDirname}/*.cpp\"",
+          "-o",
+          "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+          "-std=c++11",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native"
+        ]
+      },
+      "windows": {
+         "command": "g++",
+       "args": [
+          "*.cpp",
+          "-o",
+          ".\\build\\${fileBasenameNoExtension}.exe",
+          "-lglu32",
+          "-lopengl32",
+          "-lfreeglut",
+          "-O3",
+          "-g3",
+          "-Wall",
+          "-fmessage-length=0",
+          "-march=native"
+        ]
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+   {
       "label": "Build and Run C/C++ Application",
       "type": "shell",
       "group": "build",
@@ -106,6 +163,38 @@
       "problemMatcher": [
         "$gcc"
       ]
+    },
+    {
+      "label": "Build and Run OpenGL C/C++ Application",
+      "type": "shell",
+      "group": "build",
+      "dependsOn": [
+        "Build OpenGL C/C++ Application"
+      ],
+      "dependsOrder": "sequence",
+      "osx": {
+        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+        "args": []
+      },
+      "linux": {
+        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+        "args": []
+      },
+      "windows": {
+        // With pause in external shell...
+        //"command": "Start-Process cmd '/c .\\build\\${fileBasenameNoExtension}.exe & pause'",
+        // ..or without pause in console area
+        "command": ".\\build\\${fileBasenameNoExtension}.exe",
+        "args": []
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
     }
+
   ]
 }
