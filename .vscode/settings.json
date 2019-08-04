@@ -17,11 +17,12 @@
    //"files.autoSave": "onWindowChange",
    //"files.hotExit": "off",
 
+   // Code Runner settings...
    "code-runner.clearPreviousOutput": true,
    "code-runner.saveAllFilesBeforeRun": true,
    "code-runner.runInTerminal": true,
    "code-runner.executorMap": {
-   "cpp": "cd $dir && C:\\MinGW\\bin\\g++ *.cpp -o build\\$fileNameWithoutExt.exe -std=c++11 -O3 -g3 -Wall -fmessage-length=0 -march=native && Start-Process cmd '/c build\\$fileNameWithoutExt.exe & pause'",
+      "cpp": "cd $dir && C:\\MinGW\\bin\\g++ *.cpp -o build\\$fileNameWithoutExt.exe -std=c++11 -O3 -g3 -Wall -fmessage-length=0 -march=native && Start-Process cmd '/c build\\$fileNameWithoutExt.exe & pause'",
    }
 }
 //https://github.com/formulahendry/vscode-code-runner/issues/416

@@ -7,5 +7,6 @@
 	"settings":
 		{
 			"files.autoSave": "onWindowChange",
+			"files.hotExit": "off",
 		}
 }

@@ -10,9 +10,9 @@
       "osx": {
         "command": "clang++",
         "args": [
-          "\"${fileDirname}/*.cpp\"",
+          "*.cpp",
           "-o",
-          "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+          "./build/${fileBasenameNoExtension}",
           "-std=c++11",
           "-O3",
           "-g3",
@@ -25,9 +25,9 @@
       "linux": {
         "command": "g++",
         "args": [
-          "\"${fileDirname}/*.cpp\"",
+          "*.cpp",
           "-o",
-          "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+          "./build/${fileBasenameNoExtension}.out",
           "-std=c++11",
           "-O3",
           "-g3",
@@ -66,9 +66,9 @@
         "command": "clang++",
         "args": [
           // I DON'T KNOW THESE SETTINGS!
-          "\"${fileDirname}/*.cpp\"",
+          "*.cpp",
           "-o",
-          "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+          "./build/${fileBasenameNoExtension}",
           "-std=c++11",
           "-O3",
           "-g3",
@@ -82,9 +82,9 @@
          // I DON'T KNOW THESE SETTINGS!
          "command": "g++",
         "args": [
-          "\"${fileDirname}/*.cpp\"",
+          "*.cpp",
           "-o",
-          "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+          "./build/${fileBasenameNoExtension}.out",
           "-std=c++11",
           "-O3",
           "-g3",
@@ -126,11 +126,11 @@
       ],
       "dependsOrder": "sequence",
       "osx": {
-        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+        "command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
       "linux": {
-        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+        "command": "./build/${fileBasenameNoExtension}.out",
         "args": []
       },
       "windows": {
@@ -157,11 +157,11 @@
       ],
       "dependsOrder": "sequence",
       "osx": {
-        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}\"",
+        "command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
       "linux": {
-        "command": "\"${fileDirname}/build/${fileBasenameNoExtension}.out\"",
+        "command": "./build/${fileBasenameNoExtension}.out",
         "args": []
       },
       "windows": {
