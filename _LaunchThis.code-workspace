@@ -8,5 +8,8 @@
 		{
 			"files.autoSave": "onWindowChange",
 			"files.hotExit": "off",
+			"files.associations": {
+				"iostream": "cpp"
+			},
 		}
 }

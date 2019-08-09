@@ -126,7 +126,10 @@
       ],
       "dependsOrder": "sequence",
       "osx": {
-        "command": "./build/${fileBasenameNoExtension}",
+         // With pause in external shell...
+         "command": "open ./build/${fileBasenameNoExtension}",
+          // ..or without pause in console area
+          //"command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
       "linux": {
@@ -157,7 +160,10 @@
       ],
       "dependsOrder": "sequence",
       "osx": {
-        "command": "./build/${fileBasenameNoExtension}",
+          // With pause in external shell...
+          //"command": "open ./build/${fileBasenameNoExtension}",
+          // ..or without pause in console area
+          "command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
       "linux": {
