@@ -1,3 +1,5 @@
+
+
 # Compiling and Running CPP Programs
 
 ## <u>**General Overview**</u>
@@ -24,7 +26,6 @@ Installation instructions for specific platforms are found in the next section. 
 3. Compile and run by hitting [Ctrl]+[Shift]+B or "Terminal->Run Build Task...". Select "Build and Run C/C++ Application".
 4. To debug, you can select [F5] or "Debug->Start Debugging"
 
-#
 ## <u>**Installing (do these once)**</u>
 ### <u>General Installation (all platforms)</u>
 #### Install Visual Studio Code ( https://code.visualstudio.com/ )
@@ -58,12 +59,54 @@ Installation instructions for specific platforms are found in the next section. 
 5. Copy the two "a" ("libfreeglut.a" and "libfreeglut_static.a") files from lib to the MinGW/lib directory (by default, this should be "C:\MinGW\lib").
 6. Finally, be sure to include the libraries for GLUT by uncommenting the GPP_LIBS setting below.
 
-
 ### <u>Mac Installation Specifics</u>
+
+#### The MacOS Terminal Application
+
+First of all, we will launch the MacOS Terminal application.  In case you are unfamiliar with this, it is a tool that allows you to type in commands and get their results as text output.  We will be using the Terminal intermittently during the course.
+
+To launch the terminal, open a Finder window, for example, by clicking its icon in the Dock:
+
+![click on finder](images/click on finder.png)
+
+Once you have a finder window open, you need to go to the "Utilities" folder that contains the Terminal app.  You can click on the Applications folder in the Sidebar, then double-click the "Utilities" subfolder.  Or you can pull down the "Go" menu and select "Utilities":
+
+![Finder Go Utilities](images/Finder Go Utilities.png)
+
+Once you open the Utilities folder, find the Terminal application and double-click to open.
+
+![select terminal in utilities folder](images/select terminal in utilities folder.png)
+
+Terminal will open and present a window like this:
+
+![image-20190809144116391](images/image-20190809144116391.png)
+
+
+
 #### Install C++
---HELP!!!!
+
+On the Mac, Apple provides a C++ compiler but it is not available by default.  The easiest way to install it starts in a terminal window.  You issue the command `xcode-select --install` and hit the ENTER or RETURN key.  When you do this, it will prompt you to confirm installation:
+
+
+
+![xcode-select --install showing dialog](images/xcode-select --install showing dialog.png)
+
+From this point on, the installation is graphical. You will see a download window showing download and installation progress.
+
+Note the option "Get Xcode."  Xcode is Apple's integrated development environment for developing software for its computers, phones, and other devices.  If you find that interesting, go ahead and download it!  However, it is not needed for the course, it is a very large download (9+ GB), the install takes longer, and you can always download it again later.
+
+#### Verify Compiler Install
+
+Once you have installed the compiler, go back to your terminal window and type in the command `c++` then ENTER.  This is not a complete command, but it will show you when the compiler is correctly installed:
+
+![image-20190809163500054](images/image-20190809163500054.png)
+
+Yes, this is reporting an error, but it is the `c++` command reporting it ("clang").  If the compiler is not installed, the message would be `-bash: c++: command not found`.
+
+After this, you can compile and run C++ in Visual Studio Code with no further modifications.
 
 #### Optional: Install OpenGL and GLUT (  )
+
 --HELP!!!!
 
 ### <u>Linux Installation Specifics</u>
