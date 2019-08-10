@@ -65,16 +65,19 @@
       "osx": {
         "command": "clang++",
         "args": [
-          // I DON'T KNOW THESE SETTINGS!
           "*.cpp",
           "-o",
           "./build/${fileBasenameNoExtension}",
-          "-std=c++11",
+          "-framework",
+          "GLUT",
+          "-framework",
+          "OpenGL",
           "-O3",
           "-g3",
           "-Wall",
           "-fmessage-length=0",
           "-march=native",
+          "-Wno-deprecated",
           "-v"
         ],
       },

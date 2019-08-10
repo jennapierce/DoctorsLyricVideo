@@ -10,9 +10,12 @@
       ".vscode": true,
       ".git*": true,
       "*.code-workspace": true,
-      "build\\.gitkeep": true,
+      "**/.gitkeep": true,
+      "**/*.dSYM": true,
+      "**/.DS_Store": true,
       "README.md": true,
    },
+
 
    //"files.autoSave": "onWindowChange",
    //"files.hotExit": "off",

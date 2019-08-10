@@ -106,8 +106,7 @@ Yes, this is reporting an error, but it is the `c++` command reporting it ("clan
 After this, you can compile and run C++ in Visual Studio Code with no further modifications.
 
 #### Optional: Install OpenGL and GLUT (  )
-
---HELP!!!!
+There is no need to install anything other than the above to get OpenGL working on a Mac. However, instead of including <GL/glut.h>, you will need to include <GLUT/glut.h> whereever appropriate. Also, note that not all features (especially advanced concepts like materials and textures) may not work properly.
 
 ### <u>Linux Installation Specifics</u>
 #### Install C++
