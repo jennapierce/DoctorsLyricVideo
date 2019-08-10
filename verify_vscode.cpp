@@ -3,8 +3,12 @@
 // Author: Scott McDermott
 // Date Modified: 8/30/2018
 
-//#include <GLUT/glut.h>
-#include <GL/glut.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#elif defined _WIN32 || defined _WIN64
+    #include <GL\glut.h>
+#endif 
+
 #include <iostream>
 using namespace std;
 
