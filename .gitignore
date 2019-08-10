@@ -1,5 +1,7 @@
-# We can exlude the build directory, but this will cause problems
+# We can exclude the build directory, but this will cause problems
 # **/build/*
+# Rather, exclude all files in the build directory
+build/*
 
 # See https://github.com/github/gitignore
 

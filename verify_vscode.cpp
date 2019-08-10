@@ -3,7 +3,8 @@
 // Author: Scott McDermott
 // Date Modified: 8/30/2018
 
-#include <GLUT/glut.h>
+//#include <GLUT/glut.h>
+#include <GL/glut.h>
 #include <iostream>
 using namespace std;
 
