@@ -3,14 +3,22 @@
 // Author: Scott McDermott
 // Date Modified: 8/30/2018
 
+
+
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	cout << "Hi there!\n";
+	return 0;
+}
+/*
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #elif defined _WIN32 || defined _WIN64
     #include <GL\glut.h>
 #endif 
-
-#include <iostream>
-using namespace std;
 
 //Prototypes...
 void display(void);
@@ -46,3 +54,4 @@ void display()
 	
 	glutSwapBuffers();
 }
+*/

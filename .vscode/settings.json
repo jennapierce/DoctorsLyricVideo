@@ -16,9 +16,9 @@
       "README.md": true,
    },
 
-
-   //"files.autoSave": "onWindowChange",
-   //"files.hotExit": "off",
+   "workbench.editor.enablePreview": true,
+   "files.autoSave": "onWindowChange",
+   "files.hotExit": "off",
 
    // Code Runner settings...
    "code-runner.clearPreviousOutput": true,
