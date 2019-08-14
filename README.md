@@ -39,7 +39,7 @@ Installation instructions for specific platforms are found in the subsequent sec
 ### <u>Windows Installation Specifics</u>
 #### Install MinGW ( http://www.mingw.org )
 
-1. Install the default installer (`mingw-get-setup.exe`) with the default options (in the default location--`C:\\MinGW\\`).
+1. Install the default installer (`mingw-get-setup.exe`) with the default options (in the default location--`C:\MinGW\`).
 1. The default installer will do a few things and then take you to the installation manager.
 1. From here, under `Basic Setup`, select `mingw32-gcc-g++` and `mingw32-base`.
 1. Click the menu `Installation`, then `Apply Changes` and apply the pending actions.
