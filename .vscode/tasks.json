@@ -7,7 +7,7 @@
       "label": "Build C/C++ Application",
       "type": "shell",
       "group": "build",
-      "osx": {
+      "osx": { // Build Mac
         "command": "clang++",
         "args": [
           "*.cpp",
@@ -22,7 +22,7 @@
           "-v"
         ],
       },
-      "linux": {
+      "linux": { // Build Linux
         "command": "g++",
         "args": [
           "*.cpp",
@@ -36,9 +36,9 @@
           "-march=native"
         ]
       },
-      "windows": {
-         "command": "g++",
-       "args": [
+      "windows": { // Build Windozzze
+        "command": "g++",
+        "args": [
           "*.cpp",
           "-o",
           ".\\build\\${fileBasenameNoExtension}.exe",
@@ -62,7 +62,7 @@
       "label": "Build OpenGL C/C++ Application",
       "type": "shell",
       "group": "build",
-      "osx": {
+      "osx": { // Build Mac OpenGL
         "command": "clang++",
         "args": [
           "*.cpp",
@@ -81,14 +81,15 @@
           "-v"
         ],
       },
-      "linux": {
-         // I DON'T KNOW THESE SETTINGS!
-         "command": "g++",
+      "linux": { // Build Linux OpenGL
+        "command": "g++",
         "args": [
           "*.cpp",
           "-o",
           "./build/${fileBasenameNoExtension}.out",
           "-std=c++11",
+          "-lGL",
+          "-lglut",
           "-O3",
           "-g3",
           "-Wall",
@@ -96,9 +97,9 @@
           "-march=native"
         ]
       },
-      "windows": {
-         "command": "g++",
-       "args": [
+      "windows": { // Build Windozzze OpenGL
+        "command": "g++",
+        "args": [
           "*.cpp",
           "-o",
           ".\\build\\${fileBasenameNoExtension}.exe",
@@ -128,18 +129,21 @@
         "Build C/C++ Application"
       ],
       "dependsOrder": "sequence",
-      "osx": {
-         // With pause in external shell...
-         "command": "open ./build/${fileBasenameNoExtension}",
-          // ..or without pause in console area
-          //"command": "./build/${fileBasenameNoExtension}",
+      "osx": { // Run Mac
+        // With pause in external shell...
+        "command": "open ./build/${fileBasenameNoExtension}",
+        // ..or without pause in console area
+        //"command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
-      "linux": {
-        "command": "./build/${fileBasenameNoExtension}.out",
+      "linux": { // Run Linux
+        // With pause in external shell...
+        "command": "lxterminal -e \"bash -c ./build/${fileBasenameNoExtension}.out && read -p 'Press [enter] to continue...'\"",
+        // ..or without pause in console area
+        //"command": "./build/${fileBasenameNoExtension}.out",
         "args": []
       },
-      "windows": {
+      "windows": { // Run Windozzze
         // With pause in external shell...
         "command": "Start-Process cmd '/c .\\build\\${fileBasenameNoExtension}.exe & pause'",
         // ..or without pause in console area
@@ -162,21 +166,15 @@
         "Build OpenGL C/C++ Application"
       ],
       "dependsOrder": "sequence",
-      "osx": {
-          // With pause in external shell...
-          //"command": "open ./build/${fileBasenameNoExtension}",
-          // ..or without pause in console area
-          "command": "./build/${fileBasenameNoExtension}",
+      "osx": { // Run Mac OpenGL
+        "command": "./build/${fileBasenameNoExtension}",
         "args": []
       },
-      "linux": {
+      "linux": { // Run Linux OpenGL
         "command": "./build/${fileBasenameNoExtension}.out",
         "args": []
       },
-      "windows": {
-        // With pause in external shell...
-        //"command": "Start-Process cmd '/c .\\build\\${fileBasenameNoExtension}.exe & pause'",
-        // ..or without pause in console area
+      "windows": { // Run Windozzze OpenGL
         "command": ".\\build\\${fileBasenameNoExtension}.exe",
         "args": []
       },

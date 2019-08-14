@@ -25,6 +25,8 @@ Installation instructions for specific platforms are found in the subsequent sec
 > Date Last Modified: [Date Modified]
 > ```
 
+---
+
 ## <u>**Installing (do these once)**</u>
 ### <u>General Installation (all platforms)</u>
 #### Install Visual Studio Code ( https://code.visualstudio.com/ )
@@ -32,6 +34,7 @@ Installation instructions for specific platforms are found in the subsequent sec
 1. The first time you launch VSC, it will probably try to install a few plugins for handling cpp files. This is good! If it needs a little push, you can start the plugin manager (`[command or Ctrl]+[Shift]+X`) and install `C/C++ for Visual Studio Code`.
 1. Generally, you will start projects using the file `_LaunchThis.code-workspace`. This should open up VSC as a workspace with all of the necessary settings. If this file type is not already associated with VSC, do so.
 
+---
 
 ### <u>Windows Installation Specifics</u>
 #### Install MinGW ( http://www.mingw.org )
@@ -56,9 +59,11 @@ Installation instructions for specific platforms are found in the subsequent sec
 1. Copy the four files in the folder `GL` under include to the `MinGW/include/GL` directory (by default, this should be `C:\MinGW\include\GL`).
 1. Copy the two `a` (`libfreeglut.a` and `libfreeglut_static.a`) files from lib to the `MinGW/lib` directory (by default, this should be `C:\MinGW\lib`).
 
+---
+
 ### <u>Mac Installation Specifics</u>
 
-#### The MacOS Terminal Application
+#### Install XCode with C++ Compiler
 
 1. Launch the MacOS Terminal application. In case you are unfamiliar with this, it is a tool that allows you to type in commands and get their results as text output. You will be using the Terminal intermittently during the course. Type `[command]+space` to bring up Spotlight Search and type `terminal`. Press `[return]` to launch.
 1. To install the basic C++ compiler and utilities, type `xcode-select --install` and hit `[return]`.  When you do this, it will prompt you to confirm installation. From this point on, the installation is graphical. You will see a download window showing download and installation progress.
@@ -66,3 +71,37 @@ Installation instructions for specific platforms are found in the subsequent sec
 
 #### Optional: Install OpenGL and GLUT
 There is no need to install anything other than the above to get OpenGL working on a Mac. However, instead of including `<GL/glut.h>`, you will need to include `<GLUT/glut.h>` where ever appropriate. Also, note that not all features (especially advanced concepts like materials and textures) may not work properly.
+
+---
+
+### <u>Linux (Raspbian) Installation Specifics</u>
+
+#### Install Visual Studio Code (Code-OSS)
+1. If you've previously installed `code-oss` andit is not working properly (installs other than version 1.29), you'll need to purge it prior to starting:
+    ```{bash}
+    sudo apt-get purge code-oss
+    ```
+1. Download GPG signing key from PackageCloud: [https://packagecloud.io/headmelted/codebuilds/gpgkey](https://packagecloud.io/headmelted/codebuilds/gpgkey)
+1. Import GPG key
+    ```{bash}
+    gpg --import /home/pi/Downloads/headmelted-code-oss-0CC3FD642696BFC8.pub.gpg
+    gpg --list-keys
+     ```
+1. Install the PackageCloud repository for code-oss
+    ```{bash}
+    curl -s https://packagecloud.io/install/repositories/headmelted/codebuilds/script.deb.sh | sudo bash
+    ```
+1. Install code-oss
+    ```{bash}
+    sudo apt-get install code-oss=1.29.0-1539702238
+    ```
+1. Tell `apt` to hold at version 1.29, since 1.32 doesn't work properly
+    ```{bash}
+    sudo apt-mark hold code-oss
+    ```
+
+#### Install GLUT
+1. From the terminal, simply type:
+    ```{bash}
+    sudo apt-get install freeglut3-dev g++
+    ```
