@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "irrKlang-64bit-1.5.0"
+		},
+		{
+			"path": "irrKlang-64bit-1.5.0/include"
 		}
 	],
 	"settings":
