@@ -1,10 +1,12 @@
-//Filename: HW8_Pierce
-//Description: Textures wrapped on 3D objects and 2D backgrounds
+//Filename: Final_Pierce
+//Description: 
 //Author: Jenna Pierce
-//Date Modified: 12/08/19
+//Date Modified: 12/12/19
 
+#include <iostream>  
+using namespace std;
 #include "GLUtilities.h"
-#include <irrKlang.h>
+#include <irrklang.h>
 
 #if defined __APPLE__
     #include <GLUT/glut.h>
@@ -18,8 +20,6 @@
 
 #include "Camera.h"
 #include "Material.h"
-
-using namespace irrklang;
 
 void display(void);
 void reshape(GLsizei width, GLsizei height);
@@ -48,16 +48,14 @@ Material materials [6];
 Material sky;
 GLUquadric *q;
 
-ISoundEngine *SoundEngine = createIrrKlangDevice();
-
 int main(int argc, char** argv) {
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowSize(screenWidth, screenHeight);   
     glutInitWindowPosition(50, 50); 
-
-	glutCreateWindow("Textures");    
+		
+	glutCreateWindow("Slip");    
     glutDisplayFunc(&display); 
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboardClick);
@@ -66,14 +64,14 @@ int main(int argc, char** argv) {
     glutMotionFunc(mouseMotion);
     glutTimerFunc(20, timer, 20);
 
-	ground.load("Textures/f2.tga");
-	materials[0].load("Textures/f1.tga");
-	materials[1].load("Textures/Marble4.tga");
-	materials[2].load("Textures/Marble4.tga");
-	materials[3].load("Textures/Marble4.tga");
-	materials[4].load("Textures/Marble4.tga");
-	materials[5].load("Textures/Marble4.tga");
-	sky.load("Textures/f4.tga");
+	ground.load("planets/stars.tga");
+	materials[0].load("planets/stars.tga");
+	materials[1].load("planets/stars.tga");
+	materials[2].load("planets/stars.tga");
+	materials[3].load("planets/stars.tga");
+	materials[4].load("planets/stars.tga");
+	materials[5].load("planets/stars.tga");
+	sky.load("planets/stars.tga");
 
 	q = gluNewQuadric();
 	gluQuadricNormals(q, GL_SMOOTH);
@@ -93,47 +91,182 @@ void display(void) {
 	reshape(screenWidth, screenHeight);
 	avatarPOV.runCamera();
 	enableLights();
-    
-	SoundEngine->play2D("Doctors  -Slip.mp3", GL_TRUE);
 
+	char text[80];
+    GLfloat textWidth = 0.0;
+    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear out the color and depth buffer
     glMatrixMode(GL_MODELVIEW);     // Go into model mode
-    glDisable(GL_CULL_FACE);        // Won't draw back sides
+    glEnable(GL_CULL_FACE);        // Won't draw back sides
     
     glLoadIdentity();
 
+	//I try to run but I slip away cube...
     glPushMatrix();
-    glRotatef(orbitRotation, 0.0f, 1.0f, 0.0f);
-    glScalef(2.6f, 2.6f, 2.6f);
-    buildPyramid();
+    glRotatef(rotationX, 0.0f, 1.0f, 0.0f);
+    glScalef(0.4f, 0.4f, 0.4f);
+	glTranslatef(0.0f, 0.0f, 36.0f);
+	drawTexturedRectangle(materials, 6.0);
     glPopMatrix();
 
+	glColor3f(152.0/255.0f, 118.0/255.0f, 177.0/255.0f); //purple
     glPushMatrix();
-    glRotatef(rotationX, 0.0f, 0.0f, 3.0f);
-    glRotatef(orbitRotation, 0.0f, 1.0f, 1.0f);
-    glTranslatef(9.0f, 0.0f, 0.0f);
-    glScalef(1.0f, 1.0f, 1.0f);
-    glRotatef(orbitRotation, 1.0f, 1.0f, 0.0f);
-    drawTexturedCube(materials, 2.0);
-    glPopMatrix();    
+	strcpy(text, "I try to run"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 1000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+    glColor3f(83.0/255.0f, 200.0/255.0f, 172.0/255.0f); //blue
+    glPushMatrix();
+	strcpy(text, "but I slip away..."); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 1000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	//It's hard to remember the things you say cube...
+    glPushMatrix();
+    glRotatef(rotationX, 0.0f, 1.0f, 0.0f);
+    glScalef(0.4f, 0.4f, 0.4f);
+	glTranslatef(0.0f, 0.0f, 106.0f);
+	drawTexturedRectangle(materials, 6.0);
+    glPopMatrix();
+
+
+	glColor3f(251.0/255.0f, 248.0/255.0f, 125.0/255.0f); // yellow    
+	glPushMatrix();
+	strcpy(text, "It's hard to remember"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 4000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+    glColor3f(252.0/255.0f, 198.0/255.0f, 110.0/255.0f); //orange
+	glPushMatrix();
+	strcpy(text, "the things you say"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 4000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	//I'm falling faster everydaycube...
+    glPushMatrix();
+    glRotatef(rotationX, 0.0f, 1.0f, 0.0f);
+    glScalef(0.4f, 0.4f, 0.4f);
+	glTranslatef(0.0f, 0.0f, 216.0f);
+	drawTexturedRectangle(materials, 6.0);
+    glPopMatrix();
+
+    glColor3f(242.0/255.0f, 152.0/255.0f, 177.0/255.0f); //pink 
+	glPushMatrix();
+	strcpy(text, "I'm falling faster'"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 8000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+ 	glColor3f(170.0/255.0f, 214.0/255.0f, 132.0/255.0f); //green
+	glPushMatrix();
+	strcpy(text, "everyday"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 8000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+    glColor3f(242.0/255.0f, 152.0/255.0f, 177.0/255.0f); //pink 
+	glPushMatrix();
+	strcpy(text, "Why"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 12000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	glColor3f(252.0/255.0f, 198.0/255.0f, 110.0/255.0f); //orange
+	glPushMatrix();
+	strcpy(text, "oh why"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 14000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+    glColor3f(83.0/255.0f, 200.0/255.0f, 172.0/255.0f); //blue
+	glPushMatrix();
+	strcpy(text, "oh why"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 16000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	glColor3f(152.0/255.0f, 118.0/255.0f, 177.0/255.0f); //purple
+	glPushMatrix();
+	strcpy(text, "Why"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 18000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	glColor3f(251.0/255.0f, 248.0/255.0f, 125.0/255.0f); // yellow    
+	glPushMatrix();
+	strcpy(text, "can't I"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 20000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+	//Why's cube...
+    glPushMatrix();
+    glRotatef(rotationX, 0.0f, 1.0f, 0.0f);
+    glScalef(0.4f, 0.4f, 0.4f);
+	glTranslatef(0.0f, 0.0f, 516.0f);
+	drawTexturedRectangle(materials, 6.0);
+    glPopMatrix();
+
+ 	glColor3f(170.0/255.0f, 214.0/255.0f, 132.0/255.0f); //green
+	glPushMatrix();
+	strcpy(text, "your air"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, -250.0f, 22000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();
+
+ 	glColor3f(170.0/255.0f, 214.0/255.0f, 132.0/255.0f); //green
+	glPushMatrix();
+	strcpy(text, "Breath in"); 
+    textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
+    glScalef(-0.01f, 0.01f, 0.01f);
+    glTranslatef(-textWidth*0.5, 200.0f, 22000.0f);
+    glLineWidth(1.0f);
+    drawStrokeText(text, GLUT_STROKE_ROMAN, 0.0f, 0.0f, 0.0f);
+    glPopMatrix();  
 
 	GLfloat groundSize = 1000.0f;
 	GLfloat groundLocation = -15.0f;
 	GLfloat repeatNum = groundSize / 10.0f;
-	glPushMatrix();
-	ground.setupMaterial();
-	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, repeatNum);
-	glVertex3f(-groundSize /2.0f, groundLocation,  groundSize /2.0);
-	glTexCoord2f(repeatNum, repeatNum);
-	glVertex3f( groundSize /2.0f, groundLocation,  groundSize /2.0);
-	glTexCoord2f(repeatNum, 0.0f);
-	glVertex3f( groundSize /2.0f, groundLocation, -groundSize /2.0);
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(-groundSize /2.0f, groundLocation, -groundSize /2.0);
-	glEnd();
-	ground.stopMaterial();
-	glPopMatrix();
 	
 	glPushMatrix(); gluQuadricOrientation(q, GLU_INSIDE);
 	glEnable(GL_CULL_FACE);
@@ -155,10 +288,9 @@ void reshape(GLsizei width, GLsizei height) {
 	screenWidth = width;
 	screenHeight = height;
 	
-	avatarPOV.setupCamera(CAM_PROJ_PERSPECTIVE, width, height, 45.0f, 0.01f, 2000.0f);
-	
+	avatarPOV.setupCamera(CAM_PROJ_PERSPECTIVE, width, height, 45.0f, 0.01f, 1000.0f);
+	gluPerspective(60, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1, 500.0);
 	glViewport(0, 0, width, height);
-	
 }
 
 void resetScene() {
@@ -185,7 +317,7 @@ void resetScene() {
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);      // Use best perspective correction
   
     reshape(screenWidth, screenHeight);
-	
+    
 	glutPostRedisplay();
 
 }

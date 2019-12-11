@@ -25,7 +25,7 @@ void Camera::reset()
 	projType = CAM_PROJ_PERSPECTIVE;
 	fovAngle = 45.0; //60.0f
 	nearClip = 0.1f; //1.0f
-	farClip = 100.0f; //1000.0f
+	farClip = 1000.0f; //1000.0f
 	vpWidth = 640;
 	vpHeight = 480;
 	location.reset();
