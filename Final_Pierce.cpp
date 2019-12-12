@@ -3,10 +3,10 @@
 //Author: Jenna Pierce
 //Date Modified: 12/12/19
 
+//drive forward
+
 #include <iostream>  
-using namespace std;
 #include "GLUtilities.h"
-#include <irrklang.h>
 
 #if defined __APPLE__
     #include <GLUT/glut.h>
@@ -20,6 +20,10 @@ using namespace std;
 
 #include "Camera.h"
 #include "Material.h"
+
+//using namespace irrklang;
+
+//#pragma comment(lib, "/Users/jennapierce/Documents/Intro Graphics/FinalProject-jennapierce/irrKlang-64bit-1.6.0/bin/macosx-gcc/libirrklang.dylib") 
 
 void display(void);
 void reshape(GLsizei width, GLsizei height);
@@ -49,6 +53,7 @@ Material sky;
 GLUquadric *q;
 
 int main(int argc, char** argv) {
+  	
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
@@ -78,6 +83,8 @@ int main(int argc, char** argv) {
 	gluQuadricTexture(q, GL_TRUE);
 	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);	
 	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	
+	//ISoundEngine *SoundEngine = createIrrKlangDevice();
 
     resetScene();
     glutMainLoop();
@@ -100,6 +107,8 @@ void display(void) {
     glEnable(GL_CULL_FACE);        // Won't draw back sides
     
     glLoadIdentity();
+
+	//SoundEngine->play2D("Slip.mp3", GL_TRUE);
 
 	//I try to run but I slip away cube...
     glPushMatrix();
@@ -168,7 +177,7 @@ void display(void) {
 
     glColor3f(242.0/255.0f, 152.0/255.0f, 177.0/255.0f); //pink 
 	glPushMatrix();
-	strcpy(text, "I'm falling faster'"); 
+	strcpy(text, "I'm falling faster"); 
     textWidth = getStrokeTextWidth(text, GLUT_STROKE_ROMAN);
     glScalef(-0.01f, 0.01f, 0.01f);
     glTranslatef(-textWidth*0.5, 200.0f, 8000.0f);
