@@ -1,4 +1,4 @@
-#include "/Users/jennapierce/Documents/Intro Graphics/HW8-jennapierce/GLUtilities.h" 
+#include "GLUtilities.h" 
 
 
 void drawTexturedCube(Material mats[], float w) {

@@ -3,8 +3,8 @@
 //Author: Jenna Pierce
 //Date Modified: 11/05/19
 
-#include <OpenGL/gl.h>
-#include <GLUT/glut.h>
+#include <gl/gl.h>
+#include <gl/glut.h>
 #include "Material.h"
 
 #pragma once
